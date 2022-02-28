@@ -164,8 +164,6 @@ progress {
 }
 
 .memory-game.card-16 {
-  max-width: 100vh;
-  max-height: 100vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -371,13 +369,13 @@ progress {
 
 @media (min-width: 1201px) {
   .game {
-    padding: 50px;
+    padding: 50px 50px;
+    padding-top: 25px;
   }
   
   .memory-game {
     width: 100%;
     height: 100%;
-    row-gap: 50px;
   }
 
   .game-score {
@@ -411,7 +409,6 @@ progress {
   .winner-descr {
     font-size: 60px;
   }
-
 }
 
 
@@ -420,6 +417,10 @@ progress {
     width: 22%;
     height: 29%;
   }
+  
+  .memory-game.card-16 {
+    max-width: 100vh;
+  }  
   
   .memory-game.card-16 .memory-card {
     width: 21%;
@@ -456,5 +457,11 @@ progress {
   .memory-game.card-24 .memory-card {
     height: 14%;
     width: 20%;
+  }
+
+  @media (max-width: 1000px) {
+    .memory-game {
+      height: calc(100% - (1000px - 100%) * 0.2);
+    }  
   }
 }

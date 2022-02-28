@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       game.innerHTML = '';
 
-      game.append(selectGame());
+      return game.append(selectGame());
     })
   }
 });
