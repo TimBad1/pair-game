@@ -1,2 +1,2 @@
-# pair-game
-pair game, js
+### https://timbad1.github.io/pair-game
+
