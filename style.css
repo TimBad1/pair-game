@@ -1,0 +1,361 @@
+ html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 640px;
+  min-height: 640px;
+}
+
+main {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+button,
+select { /* 1 */
+  text-transform: none;
+  cursor: pointer;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+[hidden] {
+  display: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Veles';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Veles-Bold.woff2') format('woff2');
+}
+
+:root {
+  --first-color: #ff0;
+  --second-color: #313;
+}
+
+.game {
+  position: relative;
+  height: 100vh;
+  /* display: flex; */
+  background-image: url('./img/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.select-game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* width: 100vw;
+  height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 2;
+  transition: transform .5s linear .3s;
+}
+
+.game.play .select-game {
+  transform: translateY(-100%);
+}
+
+
+.select-button {
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 24px;
+  /* line-height: 2em; */
+  color: var(--first-color);
+  transition: all .3s linear;
+}
+
+.select-button:hover,
+.select-button:focus {
+  box-shadow: 0 0 10px 10px var(--second-color);
+  background-color: var(--second-color);
+  border-color: var(--second-color);
+}
+
+.memory-game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  perspective: 1000px;
+  transform: translateY(150%);
+  transition: transform .5s linear .3s;
+}
+
+.memory-game.card-16 {
+  max-width: 100vh;
+  max-height: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-score {
+  position: absolute;
+  transform: translateY(-50%);
+  font-family: 'Veles';
+  color: var(--first-color);
+}
+
+
+.game.play .memory-game {
+  transform: translateY(0%);
+  
+}
+
+.memory-card {
+  margin: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  cursor: pointer;
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s linear;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1C7CCC;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+  color: #fff;
+  font-size: 100px;
+  font-family: 'Veles';
+  line-height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.winner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  background-color: rgba(255,255,255,.3);
+  z-index: 3;
+  opacity: 1;
+  transition: opacity .3s linear;
+}
+
+.winner-descr {
+  color: var(--first-color);
+  font-family: 'Veles';
+}
+
+.winner-btn {
+  border: none;
+  background: none;
+  color: var(--second-color);
+  font-size: 72px;
+  font-family: 'Veles';
+}
+
+.score-game {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  border: 30px solid var(--first-color);
+  background-color: var(--second-color);
+  font-family: 'Veles';
+  font-size: 24px;
+  color: var(--first-color);
+}
+
+.game-place {
+  padding: 5px;
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  color: wheat;
+  font-size: 24px;
+  font-family: 'Veles';
+}
+
+.footer__link {
+  text-decoration: none;
+  color: wheat;
+  transition: text-shadow .3s linear;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  text-shadow: 0 0 10px black;
+}
+
+.footer__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer__img {
+  width: 150px;
+  height: auto;
+  transition: filter .3s linear;
+}
+
+.footer__img:hover,
+.footer__img:focus {
+  filter: drop-shadow(0 0 10px wheat);
+}
+
+@media (min-width: 1201px) {
+  .game {
+    padding: 50px;
+  }
+  
+  .memory-game {
+    width: 100%;
+    height: 100%;
+    row-gap: 50px;
+  }
+
+  .game-score {
+    top: 25px;
+    right: 50px;
+    font-size: 24px;
+  }
+
+  .winner-descr {
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .game {
+    padding: 20px;
+  }
+  
+  .memory-game {
+    width: 100%;
+    height: 100%;
+    row-gap: 20px;
+  }
+
+  .game-score {
+    top: 13px;
+    right: 20px;
+    font-size: 16px;
+  }
+
+  .winner-descr {
+    font-size: 60px;
+  }
+
+}
+
+
+@media (orientation: landscape) {
+  .memory-game.card-12 .memory-card {
+    width: 22%;
+    height: 29%;
+  }
+  
+  .memory-game.card-16 .memory-card {
+    width: 21%;
+    height: 21%;
+  }
+  
+  .memory-game.card-20 .memory-card {
+    width: 17%;
+    height: 20%;
+  }
+  
+  .memory-game.card-24 .memory-card {
+    width: 14%;
+    height: 20%;
+  }
+}
+
+@media (orientation: portrait) {
+  .memory-game.card-12 .memory-card {
+    height: 22%;
+    width: 29%;
+  }
+  
+  .memory-game.card-16 .memory-card {
+    height: 20%;
+    width: 20%;
+  }
+  
+  .memory-game.card-20 .memory-card {
+    height: 20%;
+    width: 17%;
+  }
+  
+  .memory-game.card-24 .memory-card {
+    height: 14%;
+    width: 20%;
+  }
+}
